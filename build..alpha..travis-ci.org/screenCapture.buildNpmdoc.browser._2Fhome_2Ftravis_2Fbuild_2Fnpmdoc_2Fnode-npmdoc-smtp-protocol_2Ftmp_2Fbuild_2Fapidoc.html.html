@@ -1,0 +1,797 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/substack/node-smtp-protocol#readme">smtp-protocol (v2.4.7)</a>
+</h1>
+<h4>implements the smtp protocol for clients and servers</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.smtp-protocol">module smtp-protocol</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.smtp-protocol.connect">
+            function <span class="apidocSignatureSpan">smtp-protocol.</span>connect
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.smtp-protocol.createServer">
+            function <span class="apidocSignatureSpan">smtp-protocol.</span>createServer
+            <span class="apidocSignatureSpan">(opts, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">smtp-protocol.</span>dot</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">smtp-protocol.</span>parse_data</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">smtp-protocol.</span>protocol</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.smtp-protocol.dot">module smtp-protocol.dot</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.smtp-protocol.dot.dot">
+            function <span class="apidocSignatureSpan">smtp-protocol.</span>dot
+            <span class="apidocSignatureSpan">(source)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.smtp-protocol.dot.undot">
+            function <span class="apidocSignatureSpan">smtp-protocol.dot.</span>undot
+            <span class="apidocSignatureSpan">(target)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.smtp-protocol.parse_data">module smtp-protocol.parse_data</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.smtp-protocol.parse_data.getBytes">
+            function <span class="apidocSignatureSpan">smtp-protocol.parse_data.</span>getBytes
+            <span class="apidocSignatureSpan">(n, target)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.smtp-protocol.parse_data.getCommand">
+            function <span class="apidocSignatureSpan">smtp-protocol.parse_data.</span>getCommand
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.smtp-protocol.parse_data.getLine">
+            function <span class="apidocSignatureSpan">smtp-protocol.parse_data.</span>getLine
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.smtp-protocol.parse_data.getUntil">
+            function <span class="apidocSignatureSpan">smtp-protocol.parse_data.</span>getUntil
+            <span class="apidocSignatureSpan">(terminal, target)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.smtp-protocol.parse_data.parseData">
+            function <span class="apidocSignatureSpan">smtp-protocol.parse_data.</span>parseData
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.smtp-protocol.parse_data.parseLines">
+            function <span class="apidocSignatureSpan">smtp-protocol.parse_data.</span>parseLines
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.smtp-protocol.protocol">module smtp-protocol.protocol</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.smtp-protocol.protocol.client">
+            function <span class="apidocSignatureSpan">smtp-protocol.protocol.</span>client
+            <span class="apidocSignatureSpan">(opts, stream)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.smtp-protocol.protocol.server">
+            function <span class="apidocSignatureSpan">smtp-protocol.protocol.</span>server
+            <span class="apidocSignatureSpan">(stream)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.smtp-protocol" id="apidoc.module.smtp-protocol">module smtp-protocol</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.smtp-protocol.connect" id="apidoc.element.smtp-protocol.connect">
+        function <span class="apidocSignatureSpan">smtp-protocol.</span>connect
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">connect = function () {
+    var args = [].slice.call(arguments).reduce(function (acc, arg) {
+        acc[typeof arg] = arg;
+        return acc;
+    }, {});
+
+    var stream;
+    var cb = args.function;
+    var options = args.object || {};
+
+    var tlsOpts = options.tls;
+    options.port = args.number || 25;
+    options.host = args.string || 'localhost';
+
+    if (args.string &amp;&amp; args.string.match(/^[.\/]/)) {
+        // unix socket
+        stream = net.createConnection(args.string);
+    }
+    else if (tlsOpts) {
+        stream = tls.connect(options.port, options.host, tlsOpts, function () {
+            var pending = stream.listeners('secure').length;
+            var allOk = true;
+            if (pending === 0 &amp;&amp; !stream.authorized
+            &amp;&amp; tlsOpts.rejectUnauthorized !== false) {
+                allOk = false;
+            }
+            if (pending === 0) return done()
+
+            var ack = {
+                accept : function (ok) {
+                    allOk = allOk &amp;&amp; (ok !== false);
+                    if (--pending === 0) done();
+                },
+                reject : function () {
+                    allOk = false;
+                    if (--pending === 0) done();
+                }
+            };
+            stream.emit('secure', ack);
+
+            function done () {
+                if (!allOk) {
+                    stream.end();
+                    stream.emit('error', new Error(stream.authorizationError));
+                }
+                else cb(proto.server(stream));
+            }
+        });
+    }
+    else if (options.stream) {
+        cb(proto.server(options.stream));
+    }
+    else {
+        stream = net.connect(options);
+        stream.on('connect', function () {
+            cb(proto.server(stream));
+        });
+    }
+
+    return stream;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    //write(503, 'Bad sequence: already using TLS.');
+    return next();
+}
+clienttls = true;
+
+var tserver = tls.createServer(opts);
+tserver.listen(0, '127.0.0.1', function () {
+    var s = net.<span class="apidocCodeKeywordSpan">connect</span>(tserver.address().port, '127.0.0.1');
+    s.on('error', function (err) { stream.end() });
+    s.pipe(stream).pipe(s);
+    write(220, 'Ready to start TLS.');
+});
+
+var index = 0;
+tserver.on('secureConnection', function (sec) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.smtp-protocol.createServer" id="apidoc.element.smtp-protocol.createServer">
+        function <span class="apidocSignatureSpan">smtp-protocol.</span>createServer
+        <span class="apidocSignatureSpan">(opts, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createServer = function (opts, cb) {
+    if (typeof opts === 'string') {
+        opts = { domain: opts };
+    }
+    if (typeof opts === 'function') {
+        cb = opts;
+        opts = {};;
+    }
+    if (!opts) opts = {};
+    var istls = Boolean(opts.tls);
+    var tnet = istls ? tls : net;
+
+    return tnet.createServer(opts, function (stream) {
+        var req = proto.client(opts, stream);
+        var clienttls = istls;
+
+        req.on('error', function () {});
+        stream.on('error', function (err) {});
+
+        req.on('_tlsNext', function (write, next) {
+            if (clienttls) {
+                write(220, 'Already using TLS?');
+                //write(503, 'Bad sequence: already using TLS.');
+                return next();
+            }
+            clienttls = true;
+
+            var tserver = tls.createServer(opts);
+            tserver.listen(0, '127.0.0.1', function () {
+                var s = net.connect(tserver.address().port, '127.0.0.1');
+                s.on('error', function (err) { stream.end() });
+                s.pipe(stream).pipe(s);
+                write(220, 'Ready to start TLS.');
+            });
+
+            var index = 0;
+            tserver.on('secureConnection', function (sec) {
+                if (index ++ &gt; 0) return sec.end();
+                req._swapStream(sec);
+                req.emit('tls', sec);
+            });
+            stream.on('close', function () {
+                tserver.close();
+            });
+        });
+        cb(req);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    cb = opts;
+    opts = {};;
+}
+if (!opts) opts = {};
+var istls = Boolean(opts.tls);
+var tnet = istls ? tls : net;
+
+return tnet.<span class="apidocCodeKeywordSpan">createServer</span>(opts, function (stream) {
+    var req = proto.client(opts, stream);
+    var clienttls = istls;
+
+    req.on('error', function () {});
+    stream.on('error', function (err) {});
+
+    req.on('_tlsNext', function (write, next) {
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.smtp-protocol.dot" id="apidoc.module.smtp-protocol.dot">module smtp-protocol.dot</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.smtp-protocol.dot.dot" id="apidoc.element.smtp-protocol.dot.dot">
+        function <span class="apidocSignatureSpan">smtp-protocol.</span>dot
+        <span class="apidocSignatureSpan">(source)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">dot = function (source) {
+    var first = true;
+    var dot = through(function (buf) {
+        var data = buf.toString();
+        var s = first
+            ? data.replace(/(^|\n)\./g, '$1..')
+            : data.replace(/\n\./g, '\n..')
+        ;
+        first = data.charCodeAt(data.length - 1) === 10;
+        this.queue(s);
+    });
+    source.pipe(dot);
+    return dot;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.smtp-protocol.dot.undot" id="apidoc.element.smtp-protocol.dot.undot">
+        function <span class="apidocSignatureSpan">smtp-protocol.dot.</span>undot
+        <span class="apidocSignatureSpan">(target)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">undot = function (target) {
+    var first = true;
+    var dot = through(function (data) {
+        var s = first
+            ? data.replace(/(^|\n)\.\./g, '$1.')
+            : data.replace(/\n\.\./g, '\n.')
+        ;
+        first = data.charCodeAt(data.length - 1) === 10;
+        this.queue(s);
+    });
+    return combine(dot, target);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.smtp-protocol.parse_data" id="apidoc.module.smtp-protocol.parse_data">module smtp-protocol.parse_data</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.smtp-protocol.parse_data.getBytes" id="apidoc.element.smtp-protocol.parse_data.getBytes">
+        function <span class="apidocSignatureSpan">smtp-protocol.parse_data.</span>getBytes
+        <span class="apidocSignatureSpan">(n, target)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getBytes = function (n, target) {
+    this.bytes = n;
+    this.target = target;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.smtp-protocol.parse_data.getCommand" id="apidoc.element.smtp-protocol.parse_data.getCommand">
+        function <span class="apidocSignatureSpan">smtp-protocol.parse_data.</span>getCommand
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getCommand = function (cb) {
+    this.getLine(function (line) {
+        var m = line.match(/^(\S+)(?:\s+(.*))?$/);
+        if (!m) cb('syntax error')
+        else {
+            var cmd = parse(m[1].toLowerCase(), m[2]);
+            if (cmd instanceof Error) cb(cmd)
+            else cb(null, cmd)
+        }
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.smtp-protocol.parse_data.getLine" id="apidoc.element.smtp-protocol.parse_data.getLine">
+        function <span class="apidocSignatureSpan">smtp-protocol.parse_data.</span>getLine
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getLine = function (cb) {
+    this.queue.push(cb);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.smtp-protocol.parse_data.getUntil" id="apidoc.element.smtp-protocol.parse_data.getUntil">
+        function <span class="apidocSignatureSpan">smtp-protocol.parse_data.</span>getUntil
+        <span class="apidocSignatureSpan">(terminal, target)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getUntil(terminal, target) {
+    var self = this;
+    self.getLine(function getLine (line) {
+        if (line === terminal) target.end()
+        else {
+            target.write(line + '\r\n');
+            self.getLine(getLine);
+        }
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.smtp-protocol.parse_data.parseData" id="apidoc.element.smtp-protocol.parse_data.parseData">
+        function <span class="apidocSignatureSpan">smtp-protocol.parse_data.</span>parseData
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseData = function (cb) {
+    var self = this;
+    var bufs = [];
+
+    self.stream.on('data', function ondata (buf, offset) {
+        if (offset === undefined) offset = 0;
+
+        if (self.bytes) {
+            var ix = Math.min(buf.length, offset + self.bytes);
+            var chunk = buf.slice(offset, ix);
+            self.target.write(chunk);
+
+            self.bytes -= chunk.length;
+            if (self.bytes === 0) {
+                if (buf.length &gt; offset + chunk.length) {
+                    ondata(buf, offset + chunk.length);
+                }
+                self.target.end();
+            }
+        }
+        else {
+            for (var i = offset; i &lt; buf.length; i++) {
+                if (buf[i] === 10) {
+                    if (i &gt; offset) bufs.push(buf.slice(offset, i));
+                    cb(Buffer.concat(bufs).toString('utf8').replace(/\r$/, ''));
+                    bufs = [];
+                    if (buf.length &gt; i + 1) ondata(buf, i + 1);
+                    return;
+                }
+            }
+            if (offset &lt; buf.length) {
+                bufs.push(buf.slice(offset, buf.length));
+            }
+        }
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.smtp-protocol.parse_data.parseLines" id="apidoc.element.smtp-protocol.parse_data.parseLines">
+        function <span class="apidocSignatureSpan">smtp-protocol.parse_data.</span>parseLines
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseLines = function (cb) {
+    var self = this;
+    var continuation = null;
+
+    self.parseData(function (line) {
+        var m = line.match(/^(\d+)(?:([- ])(.+))?$/);
+        var code = m &amp;&amp; parseInt(m[1], 10);
+
+        if (!m) {
+            cb(new Error('syntax error parsing: ' + line));
+        }
+        else if (continuation) {
+            if (code !== continuation.code) {
+                cb(new Error('inconsistent code in line continuation'));
+            }
+            else {
+                continuation.lines.push(m[3]);
+                if (m[2] !== '-') {
+                    cb(null, continuation.code, continuation.lines);
+                    continuation = null;
+                }
+            }
+        }
+        else if (m[2] === '-') {
+            continuation = { code : code, lines : [ m[3] ] };
+        }
+        else if (m[3] === undefined) {
+            cb(null, code, []);
+        }
+        else cb(null, code, [ m[3] ]);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.smtp-protocol.protocol" id="apidoc.module.smtp-protocol.protocol">module smtp-protocol.protocol</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.smtp-protocol.protocol.client" id="apidoc.element.smtp-protocol.protocol.client">
+        function <span class="apidocSignatureSpan">smtp-protocol.protocol.</span>client
+        <span class="apidocSignatureSpan">(opts, stream)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">client = function (opts, stream) {
+    if (stream === undefined) {
+        stream = opts;
+        opts = {};
+    }
+    if (!opts) opts = {};
+
+    var p = parser(stream);
+    var write = writer(stream);
+    write(220, opts.domain || os.hostname());
+
+    function createAck (cb, okCode, raw) {
+        return {
+            accept : function (code, msg) {
+                write(code, msg || "OK", okCode || 250);
+                if (cb) cb();
+                if (!raw) next();
+            },
+            reject : function (code, msg) {
+                write(code, msg, 500);
+                next();
+            }
+        };
+    }
+
+    function emit (name, x) {
+        var fn = arguments[arguments.length - 1];
+        var ack = arguments[arguments.length - 1] = createAck(fn);
+        if (req.listeners(name).length === 0) {
+            if (name === 'greeting' &amp;&amp; x.greeting === 'ehlo') {
+                ack.accept(250, [ x.hostname || remoteIp, 'STARTTLS' ]);
+            }
+            else if (name === 'greeting') {
+                ack.accept(250, x.hostname);
+            }
+            else ack.accept();
+        }
+        req.emit.apply(req, arguments);
+    }
+
+    var req = new EventEmitter;
+    req._swapStream = function (s) {
+        write = writer(s);
+        p = parser(s);
+        stream = s;
+        s.on('error', req.emit.bind(req, 'error'));
+        next();
+    };
+
+    stream.on('error', req.emit.bind(req, 'error'));
+    req.socket = stream;
+    var remoteIp = stream.remoteAddress || 'unknown';
+
+    var next = (function next () {
+        p.getCommand(function (err, cmd) {
+            if (err) {
+                if (err.code) write(err.code, err.message || err.toString())
+                else write(501, err.message || err.toString())
+                return next();
+            }
+            var prevented = false;
+            req.emit('command', cmd, {
+                preventDefault: function () { prevented = true },
+                write: write,
+                next: next
+            });
+            if (prevented) return;
+
+            if (cmd.name === 'quit') {
+                write(221, 'Bye!');
+                req.emit('quit');
+                stream.end();
+            }
+            else if (cmd.name === 'rset') {
+                write(250);
+                req.to = undefined;
+                req.from = undefined;
+                req.emit('rset');
+                next();
+            }
+            else if (!req.greeting) {
+                if (cmd.name === 'greeting') {
+                    emit('greeting', cmd, function () {
+                        req.greeting = cmd.greeting;
+                        req.hostname = cmd.hostname;
+                    });
+                }
+                else {
+                    write(503, 'Bad sequence: HELO, EHLO, or LHLO expected.');
+                    next();
+                }
+            }
+            else if (cmd.name === 'mail') {
+                emit('from', cmd.from, function () {
+                    req.fromExt = cmd.ext;
+                    req.from = cmd.from;
+                });
+            }
+            else if (cmd.name === 'rcpt') {
+                emit('to', cmd.to, function () {
+                    if (req.toExt == undefined) {
+                        req.toExt = [];
+                    }
+                    req.toExt.push(cmd.ext);
+                    if (req.to == undefined) {
+                        req.to = [];
+                    }
+                    req.to.push(cmd.to);
+
+                });
+            }
+            else if (cmd.name === 'data') {
+                if (!req.from) {
+                    write(503, 'Bad sequence: MAIL expected');
+                    next();
+                }
+                else if (!req.to) {
+                    write(503, 'Bad sequence: RCPT expected');
+                    next();
+                }
+                else {
+                    var target = makeTarget(write, next, emit);
+                    var messageAck = createAck(function () {
+                        p.getUntil('.', undot(target)); ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    opts = {};;
+}
+if (!opts) opts = {};
+var istls = Boolean(opts.tls);
+var tnet = istls ? tls : net;
+
+return tnet.createServer(opts, function (stream) {
+    var req = proto.<span class="apidocCodeKeywordSpan">client</span>(opts, stream);
+    var clienttls = istls;
+
+    req.on('error', function () {});
+    stream.on('error', function (err) {});
+
+    req.on('_tlsNext', function (write, next) {
+        if (clienttls) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.smtp-protocol.protocol.server" id="apidoc.element.smtp-protocol.protocol.server">
+        function <span class="apidocSignatureSpan">smtp-protocol.protocol.</span>server
+        <span class="apidocSignatureSpan">(stream)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">server = function (stream) {
+    return new Client(stream);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        stream.emit('secure', ack);
+
+        function done () {
+            if (!allOk) {
+                stream.end();
+                stream.emit('error', new Error(stream.authorizationError));
+            }
+            else cb(proto.<span class="apidocCodeKeywordSpan">server</span>(stream));
+        }
+    });
+}
+else if (options.stream) {
+    cb(proto.server(options.stream));
+}
+else {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
