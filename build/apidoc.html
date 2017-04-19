@@ -472,7 +472,23 @@ return tnet.<span class="apidocCodeKeywordSpan">createServer</span>(opts, functi
         }
     });
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+stream.on(&#x27;error&#x27;, req.emit.bind(req, &#x27;error&#x27;));
+req.socket = stream;
+var remoteIp = stream.remoteAddress || &#x27;unknown&#x27;;
+
+var next = (function next () {
+    p.<span class="apidocCodeKeywordSpan">getCommand</span>(function (err, cmd) {
+        if (err) {
+            if (err.code) write(err.code, err.message || err.toString())
+            else write(501, err.message || err.toString())
+            return next();
+        }
+        var prevented = false;
+        req.emit(&#x27;command&#x27;, cmd, {
+...</pre></li>
     </ul>
 
 
@@ -487,7 +503,23 @@ return tnet.<span class="apidocCodeKeywordSpan">createServer</span>(opts, functi
     <li>description and source-code<pre class="apidocCodePre">getLine = function (cb) {
     this.queue.push(cb);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+ClientParser.prototype.getLine = function (cb) {
+    this.queue.push(cb);
+};
+
+ClientParser.prototype.getUntil = function getUntil (terminal, target) {
+    var self = this;
+    self.<span class="apidocCodeKeywordSpan">getLine</span>(function getLine (line) {
+        if (line === terminal) target.end()
+        else {
+            target.write(line + &#x27;\r\n&#x27;);
+            self.getLine(getLine);
+        }
+    });
+};
+...</pre></li>
     </ul>
 
 
@@ -509,7 +541,23 @@ return tnet.<span class="apidocCodeKeywordSpan">createServer</span>(opts, functi
         }
     });
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    else if (!req.to) {
+        write(503, &#x27;Bad sequence: RCPT expected&#x27;);
+        next();
+    }
+    else {
+        var target = makeTarget(write, next, emit);
+        var messageAck = createAck(function () {
+            p.<span class="apidocCodeKeywordSpan">getUntil</span>(&#x27;.&#x27;, undot(target));
+        }, 354, true);
+        req.emit(&#x27;message&#x27;, target, messageAck);
+    }
+}
+else if (cmd.name === &#x27;starttls&#x27;) {
+    req.emit(&#x27;_tlsNext&#x27;, write, next);
+    req.greeting = null;
+...</pre></li>
     </ul>
 
 
@@ -557,7 +605,23 @@ return tnet.<span class="apidocCodeKeywordSpan">createServer</span>(opts, functi
         }
     });
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+function ClientParser (stream) {
+var self = this;
+self.stream = stream;
+self.lines = [];
+self.queue = [];
+
+self.<span class="apidocCodeKeywordSpan">parseData</span>(function (line) {
+    if (self.queue.length) {
+        self.queue.shift()(line);
+    }
+    else {
+        self.lines.push(line);
+    }
+});
+...</pre></li>
     </ul>
 
 
